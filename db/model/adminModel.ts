@@ -1,3 +1,9 @@
+/**
+ * @author OKOK
+ * @desc 用户表建立
+ * @date 2024-04-24
+ */
+
 import sequelize from "../db";
 import { DataTypes } from "sequelize";
 

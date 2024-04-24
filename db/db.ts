@@ -1,3 +1,8 @@
+/**
+ * @author OKOK
+ * @desc 数据库连接模块
+ * @date 2024-04-24
+ */
 import { Sequelize } from "sequelize";
 
 const sequelize = new Sequelize(

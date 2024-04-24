@@ -1,3 +1,9 @@
+/**
+ * @author OKOK
+ * @desc 数据库初始化模块
+ * @date 2024-04-24
+ */
+
 import sequelize from "./db";
 import adminModel from "./model/adminModel";
 import md5 from "md5";

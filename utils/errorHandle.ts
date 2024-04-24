@@ -5,9 +5,11 @@
  */
 import HTTP_CODE from "./constCode";
 
+// 错误基类
 class ServiceError extends Error {
   code: number;
   message: string;
+
   constructor(message: string, code: number) {
     super(message);
     this.code = code;
