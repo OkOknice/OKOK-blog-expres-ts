@@ -47,12 +47,10 @@ app.use(
 );
 
 //引入路由
-import indexRouter from "./routes/index";
 import adminRouter from "./routes/admin";
 import captchaRouter from "./routes/captcha";
 
 // 使用中间件
-app.use("/", indexRouter);
 app.use("/api/admin", adminRouter);
 app.use("/res/captcha", captchaRouter);
 
