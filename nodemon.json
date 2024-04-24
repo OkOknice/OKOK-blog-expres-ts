@@ -17,6 +17,7 @@
     "restart": ""
   },
   "watch": [
+    "./bin/serve.ts",
     "./app",
     "./app.ts",
     "./db/*",

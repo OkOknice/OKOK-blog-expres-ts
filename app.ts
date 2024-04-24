@@ -48,10 +48,12 @@ app.use(
 
 //引入路由
 import adminRouter from "./routes/admin";
+import bannerRouter from "./routes/banner";
 import captchaRouter from "./routes/captcha";
 
 // 使用中间件
 app.use("/api/admin", adminRouter);
+app.use("/api/banner", bannerRouter);
 app.use("/res/captcha", captchaRouter);
 
 // catch 404 and forward to error handler

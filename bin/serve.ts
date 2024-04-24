@@ -88,5 +88,5 @@ function onListening() {
   const addr = server.address();
   const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr?.port;
   debug("Listening on " + bind);
-  console.log("服务器启动成功🚀");
+  console.log(`端口：${process.env.PORT}, 服务器启动成功🚀`);
 }
