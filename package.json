@@ -1,0 +1,36 @@
+{
+  "name": "okok-blog-ts",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "ts-node ./bin/serve.ts",
+    "dev": "nodemon npm run start",
+    "build": "tsc",
+    "serve": "tsc && nodemon node ./dist/bin/serve.js"
+  },
+  "dependencies": {
+    "@types/md5": "^2.3.5",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.4.5",
+    "express": "~4.16.1",
+    "express-async-errors": "^3.1.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "md5": "^2.3.0",
+    "morgan": "~1.9.1",
+    "mysql2": "^3.9.7",
+    "sequelize": "^6.37.3"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.7",
+    "@types/debug": "^4.1.12",
+    "@types/express": "^4.17.21",
+    "@types/http-errors": "^2.0.4",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.12.7",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.5"
+  }
+}
