@@ -5,7 +5,11 @@
  */
 
 import express from "express";
-import { loginService, verifyUserService } from "../services/adminService";
+import {
+  loginService,
+  updateUserInfoService,
+  verifyUserService,
+} from "../services/adminService";
 import { resultHandle } from "../utils/resultHandle";
 import { ValidationError } from "../utils/errorHandle";
 import { INewSession } from "./types/sessionType";
@@ -36,6 +40,16 @@ adminRouter.post("/login", async (req, res, next) => {
 // 校验用户
 adminRouter.get("/whoami", (req, res, next) => {
   const data = verifyUserService(req.headers.authorization as string);
+  res.send(resultHandle(data));
+});
+
+// 更新用户信息
+adminRouter.put("/update", async (req, res, next) => {
+  const params = req.body;
+  const data = await updateUserInfoService(
+    params,
+    req.headers.authorization as string
+  );
   res.send(resultHandle(data));
 });
 

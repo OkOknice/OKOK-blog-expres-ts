@@ -20,17 +20,11 @@ export const loginAao = async (loginInfo: ILoginInfo) => {
 
 // 更新
 export const updateAdmimDao = async (userInfo: IUserInfo) => {
-  const res = await adminModel.update(
-    {
-      loginId: userInfo.loginId,
-      loginPwd: userInfo.loginPwd,
-    } as ILoginInfo,
-    {
-      where: {
-        id: userInfo.id,
-      },
-    }
-  );
+  const res = await adminModel.update(userInfo, {
+    where: {
+      id: userInfo.id,
+    },
+  });
 
   return res;
 };
