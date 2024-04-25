@@ -8,6 +8,7 @@ import sequelize from "./db";
 import md5 from "md5";
 import adminModel from "./model/adminModel";
 import bannerModel from "./model/bannerModel";
+import "./model/fileModel";
 
 sequelize
   .sync({
