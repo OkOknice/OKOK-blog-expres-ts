@@ -47,7 +47,7 @@ const upload = multer({
 uploadRouter.post("/", (req, res, next) => {
   upload.single("file")(req, res, async (err) => {
     if (err instanceof multer.MulterError) {
-      throw new UploadError("文件上传失败");
+      res.send(new UploadError("文件上传失败").handleResult());
     } else {
       const fileNumber = req.body.fileNumber || getUUID();
       if (req.file) {
