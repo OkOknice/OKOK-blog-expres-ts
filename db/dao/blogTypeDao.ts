@@ -1,7 +1,8 @@
-import blogTypeModel from "../model/blogType";
+import blogTypeModel from "../model/blogModel";
 import { IBlogTypeInfo } from "./types/blogType";
 import type { Optional } from "sequelize";
 
+// 定义一个新的分类信息接口，继承IBlogTypeInfo，并去掉articleCount属性
 interface INewBlogTypeInfo extends Optional<IBlogTypeInfo, "articleCount"> {}
 
 // 添加分类
