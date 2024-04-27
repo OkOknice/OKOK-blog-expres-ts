@@ -42,6 +42,8 @@ app.use(
     path: [
       { url: "/api/admin/login", method: "POST" },
       { url: "/res/captcha", method: "GET" },
+      { url: "/api/blog/page", methods: ["GET"] },
+      { url: /\/api\/blog\/detail\/\d/, methods: ["GET"] },
     ],
   })
 );
@@ -51,6 +53,7 @@ import adminRouter from "./routes/admin";
 import bannerRouter from "./routes/banner";
 import uploadRouter from "./routes/upload";
 import blogTypeRouter from "./routes/blogType";
+import blogRouter from "./routes/blog";
 import captchaRouter from "./routes/captcha";
 
 // 使用中间件
@@ -58,6 +61,7 @@ app.use("/api/admin", adminRouter);
 app.use("/api/banner", bannerRouter);
 app.use("/api/upload", uploadRouter);
 app.use("/api/blogType", blogTypeRouter);
+app.use("/api/blog", blogRouter);
 app.use("/res/captcha", captchaRouter);
 
 // catch 404 and forward to error handler

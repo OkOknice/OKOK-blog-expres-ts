@@ -1,4 +1,4 @@
-import blogTypeModel from "../model/blogModel";
+import blogTypeModel from "../model/blogTypeModel";
 import { IBlogTypeInfo } from "./types/blogType";
 import type { Optional } from "sequelize";
 
@@ -24,11 +24,7 @@ export const getBlogTypeListDao = async () => {
 // 查询分类信息
 export const getBlogTypeInfoDao = async (id: string) => {
   const res = await blogTypeModel.findByPk(id);
-  console.log(res);
-  if (res) {
-    return res.toJSON();
-  }
-  return null;
+  return res;
 };
 
 // 更新分类信息
@@ -52,4 +48,14 @@ export const deleteBlogTypeDao = async (id: string) => {
     },
   });
   return res;
+};
+
+// 根据 id 新增对应博客分类的文章数量
+export const addBlogTypeCountDao = async (id: string) => {
+  const res = await blogTypeModel.findByPk(id);
+  if (res) {
+    return res.increment("articleCount", { by: 1 });
+  } else {
+    return null;
+  }
 };

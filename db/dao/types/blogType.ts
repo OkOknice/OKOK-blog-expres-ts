@@ -3,3 +3,9 @@ export interface IBlogTypeInfo {
   articleCount: number;
   order: number;
 }
+
+export interface IBlogPageParams {
+  page: number;
+  limit: number;
+  categoryId: number;
+}

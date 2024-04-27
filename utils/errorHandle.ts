@@ -48,8 +48,8 @@ export const ValidationError = class extends ServiceError {
 
 // 无资源错误
 export const NotFoundError = class extends ServiceError {
-  constructor() {
-    super("not found", HTTP_CODE.NOFOUND_CODE);
+  constructor(message: string = "not found") {
+    super(message, HTTP_CODE.NOFOUND_CODE);
   }
 };
 
