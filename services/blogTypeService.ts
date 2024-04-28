@@ -1,4 +1,3 @@
-// const { addBlogType, getBlogTypeList, getBlogTypeInfo, updateBlogTypeInfo, deleteBlogType } = require('../db/dao/blogTypeDao')
 import { deleteCategoryAllBlogDao } from "../db/dao/blogDao";
 import {
   addBlogTypeDao,
