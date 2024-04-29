@@ -13,6 +13,10 @@ import { addBlogTypeCountDao, getBlogTypeInfoDao } from "../db/dao/blogTypeDao";
 import { IBlogPageParams } from "../db/dao/types/blogType";
 import { blogRule, updateBlogRule } from "./validate/validateRules";
 import blogModel from "../db/model/blogModel";
+import { tranerTocResult, handleHtmlContent } from "../utils/tool";
+
+// @ts-ignore
+import toc from "markdown-toc";
 
 // 扩展验证规则
 validate.validators.categoryIdIsExist = async (value: number) => {
@@ -25,16 +29,23 @@ validate.validators.categoryIdIsExist = async (value: number) => {
 
 // 添加博客文章
 export const addBlogService = async (blogInfo: IBlogInfo) => {
-  blogInfo.toc = JSON.stringify(["a", "b"]);
+  const tocResult = toc(blogInfo.markdownContent).json;
+  const resultList = tranerTocResult(tocResult);
+  blogInfo.toc = JSON.stringify(resultList);
+  blogInfo.htmlContent = handleHtmlContent(blogInfo.htmlContent, tocResult);
+  // console.log(handleHtmlContent(blogInfo.htmlContent, tocResult));
   // 初始化新文章的其他信息
   blogInfo.scanNumber = 0; // 阅读量初始化为 0
   blogInfo.commentNumber = 0; // 评论数初始化为 0
   blogInfo.createDate = new Date().getTime();
+  delete blogInfo.markdownContent; // 删除 markdownContent 字段
   try {
     await validate.async(blogInfo, blogRule);
     const res = await addBlogDao(blogInfo);
     await addBlogTypeCountDao(blogInfo.categoryId);
-    return res.toJSON();
+    const data = res.toJSON();
+    data.toc = JSON.parse(data.toc);
+    return data;
   } catch (error) {
     console.log(error);
     throw new ValidationError("数据验证失败");

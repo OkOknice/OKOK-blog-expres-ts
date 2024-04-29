@@ -8,6 +8,7 @@ export interface IBlogInfo {
   commentNumber: number;
   createDate: number;
   categoryId: string;
+  markdownContent?: string;
 }
 
 export interface IUpdateBlogInfo extends IBlogInfo {

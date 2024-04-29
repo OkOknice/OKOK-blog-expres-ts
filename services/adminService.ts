@@ -52,7 +52,6 @@ export const updateUserInfoService = async (
   if (data.loginPwd !== md5(updateInfo.oldLoginPwd)) {
     throw new ValidationError("旧密码不正确");
   }
-  console.log(data.id);
   const params = {
     loginId: updateInfo.loginId,
     name: updateInfo.name,
