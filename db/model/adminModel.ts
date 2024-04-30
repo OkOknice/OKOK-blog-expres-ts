@@ -5,9 +5,15 @@
  */
 
 import sequelize from "../db";
-import { DataTypes } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 
-const adminModel = sequelize.define(
+interface IAdminModel extends Model {
+  loginId: string;
+  name: string;
+  loginPwd: string;
+}
+
+const adminModel = sequelize.define<IAdminModel>(
   "t-admin",
   {
     loginId: {

@@ -15,5 +15,6 @@ export const publishJwt = (signInfo: any, time: number = 1) => {
 
 // 校验 token
 export const verifyToken = (token: string) => {
+  // 解密 token
   return jwt.verify(token, md5(process.env.JWT_PRIVATEKEY as string));
 };

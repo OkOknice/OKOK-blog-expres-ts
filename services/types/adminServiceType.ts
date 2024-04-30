@@ -10,3 +10,9 @@ export interface IUpdateParams {
   name: string;
   oldLoginPwd: string;
 }
+
+export interface IResponseData {
+  id: string;
+  name: string;
+  loginId: string;
+}

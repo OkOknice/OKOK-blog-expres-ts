@@ -8,11 +8,17 @@ import { JwtPayload } from "jsonwebtoken";
 import { loginAao, updateAdmimDao } from "../db/dao/adminDao";
 import { ValidationError } from "../utils/errorHandle";
 import { publishJwt, verifyToken } from "../utils/jwt";
-import { ILoginParams, IUpdateParams } from "./types/adminServiceType";
+import {
+  ILoginParams,
+  IUpdateParams,
+  IResponseData,
+} from "./types/adminServiceType";
 import md5 from "md5";
 
 // 登录
-export const loginService = async (loginInfo: ILoginParams) => {
+export const loginService = async (
+  loginInfo: ILoginParams
+): Promise<string> => {
   loginInfo.loginPwd = md5(loginInfo.loginPwd);
   let time: number = 1;
   if (loginInfo.remembers > 1) {
@@ -34,20 +40,20 @@ export const loginService = async (loginInfo: ILoginParams) => {
 };
 
 // 校验用户
-export const verifyUserService = (value: string) => {
+export const verifyUserService = (value: string): IResponseData => {
   const token = value.split(" ")[1];
   const res = verifyToken(token) as JwtPayload;
   return {
     id: res.id,
-    name: res.name,
     loginId: res.loginId,
+    name: res.name,
   };
 };
 
 export const updateUserInfoService = async (
   updateInfo: IUpdateParams,
   token: string
-) => {
+): Promise<IResponseData> => {
   const data = verifyToken(token.split(" ")[1]) as JwtPayload;
   if (data.loginPwd !== md5(updateInfo.oldLoginPwd)) {
     throw new ValidationError("旧密码不正确");
