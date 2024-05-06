@@ -14,7 +14,6 @@ const blogTypeRouter = express.Router();
 blogTypeRouter.post("/add", async (req, res, next) => {
   const params = req.body;
   const data = await addBlogTypeServices(params);
-  // console.log(params)
   res.send(resultHandle(data));
 });
 
@@ -27,7 +26,6 @@ blogTypeRouter.get("/list", async (req, res, next) => {
 // 查询信息
 blogTypeRouter.get("/info/:id", async (req, res, next) => {
   const id = req.params.id;
-  // console.log(id)
   const data = await getBlogTypeInfoServices(id);
   res.send(resultHandle(data));
 });

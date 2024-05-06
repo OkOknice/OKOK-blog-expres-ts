@@ -13,14 +13,12 @@ import { NotFoundError } from "../utils/errorHandle";
 export const addBlogTypeServices = async (blogTypeInfo: IBlogTypeInfo) => {
   blogTypeInfo.articleCount = 0;
   const res = await addBlogTypeDao(blogTypeInfo);
-  // console.log(res)
   return res;
 };
 
 // 获取分类列表
 export const getBlogTypeListServices = async () => {
   const res = await getBlogTypeListDao();
-  // console.log(res)
   return res;
 };
 
@@ -32,7 +30,6 @@ export const getBlogTypeInfoServices = async (id: string) => {
   } else {
     throw new NotFoundError("分类不存在");
   }
-  // console.log(res)
 };
 
 // 更新分类信息

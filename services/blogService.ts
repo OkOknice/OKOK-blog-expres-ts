@@ -33,7 +33,6 @@ export const addBlogService = async (blogInfo: IBlogInfo) => {
   const resultList = tranerTocResult(tocResult);
   blogInfo.toc = JSON.stringify(resultList);
   blogInfo.htmlContent = handleHtmlContent(blogInfo.htmlContent, tocResult);
-  // console.log(handleHtmlContent(blogInfo.htmlContent, tocResult));
   // 初始化新文章的其他信息
   blogInfo.scanNumber = 0; // 阅读量初始化为 0
   blogInfo.commentNumber = 0; // 评论数初始化为 0
@@ -47,7 +46,6 @@ export const addBlogService = async (blogInfo: IBlogInfo) => {
     data.toc = JSON.parse(data.toc);
     return data;
   } catch (error) {
-    console.log(error);
     throw new ValidationError("数据验证失败");
   }
 };

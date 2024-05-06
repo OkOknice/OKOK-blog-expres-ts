@@ -7,9 +7,7 @@ interface INewBlogTypeInfo extends Optional<IBlogTypeInfo, "articleCount"> {}
 
 // 添加分类
 export const addBlogTypeDao = async (blogTypeInfo: INewBlogTypeInfo) => {
-  // console.log(blogTypeInfo)
   const res = await blogTypeModel.create(blogTypeInfo);
-  // console.log(res)
   return res.toJSON();
 };
 

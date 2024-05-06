@@ -70,7 +70,6 @@ uploadRouter.post("/", (req, res, next) => {
 uploadRouter.get("/getFile/:attachmentId", async (req, res, next) => {
   const attachmentId = req.params.attachmentId;
   const data = await getFileService(attachmentId);
-  console.log(data);
   res.send(
     resultHandle({
       downloadUrl: data.downloadUrl,
