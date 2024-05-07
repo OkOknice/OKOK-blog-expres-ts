@@ -29,6 +29,10 @@ const projectModel = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    fileNumber: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     freezeTableName: true,
