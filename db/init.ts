@@ -13,6 +13,7 @@ import blogTypeModel from "./model/blogTypeModel";
 // import "./model/blogModel";
 
 import "./model/fileModel";
+import "./model/projectModel";
 
 (async () => {
   blogTypeModel.hasMany(blogModel, {
