@@ -1,4 +1,4 @@
-import createError from "http-errors";
+// import createError from "http-errors";
 import express from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
@@ -44,6 +44,9 @@ app.use(
       { url: "/res/captcha", method: "GET" },
       { url: "/api/blog/page", methods: ["GET"] },
       { url: /\/api\/blog\/detail\/\d/, methods: ["GET"] },
+      { url: "/api/message/add", methods: ["POST"] },
+      { url: /\/api\/message\/info\/\d/, methods: ["GET"] },
+      { url: "/api/message/list", methods: ["GET"] },
     ],
   })
 );
@@ -55,6 +58,8 @@ import uploadRouter from "./routes/upload";
 import blogTypeRouter from "./routes/blogType";
 import blogRouter from "./routes/blog";
 import projectRouter from "./routes/project";
+import commentRouter from "./routes/comment";
+import messageRouter from "./routes/message";
 import captchaRouter from "./routes/captcha";
 
 // 使用中间件
@@ -64,6 +69,8 @@ app.use("/api/upload", uploadRouter);
 app.use("/api/blogType", blogTypeRouter);
 app.use("/api/blog", blogRouter);
 app.use("/api/project", projectRouter);
+app.use("/api/comment", commentRouter);
+app.use("/api/message", messageRouter);
 app.use("/res/captcha", captchaRouter);
 
 // catch 404 and forward to error handler

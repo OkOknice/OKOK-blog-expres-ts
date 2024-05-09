@@ -10,10 +10,12 @@ import adminModel from "./model/adminModel";
 import bannerModel from "./model/bannerModel";
 import blogModel from "./model/blogModel";
 import blogTypeModel from "./model/blogTypeModel";
+import commentModel from "./model/commentModel";
 // import "./model/blogModel";
 
 import "./model/fileModel";
 import "./model/projectModel";
+import "./model/messageModel";
 
 (async () => {
   blogTypeModel.hasMany(blogModel, {
@@ -24,6 +26,15 @@ import "./model/projectModel";
     targetKey: "id",
     as: "category",
   });
+  blogModel.hasMany(commentModel, {
+    foreignKey: "blogId",
+  });
+  commentModel.belongsTo(blogModel, {
+    foreignKey: "blogId",
+    targetKey: "id",
+    as: "blog",
+  });
+
   await sequelize.sync({
     alter: true,
   });
