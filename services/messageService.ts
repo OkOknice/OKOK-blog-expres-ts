@@ -13,8 +13,6 @@ export const addMessageService = async (messageInfo: IMessageParams) => {
     messageInfo.nickname = `匿名 ${Math.floor(Math.random() * 99999)}`;
   }
   messageInfo.createDate = Date.now();
-  console.log(messageInfo.createDate);
-  console.log(messageInfo);
   const res = await addMessageDao(messageInfo);
   return res;
 };
