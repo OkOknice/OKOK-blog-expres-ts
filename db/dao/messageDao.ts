@@ -4,7 +4,6 @@ import { IProjectParams } from "./types/projectType";
 // 添加留言
 export const addMessageDao = async (messageInfo: any) => {
   const res = await messageModel.create(messageInfo);
-  // console.log(res);
   return res;
 };
 
